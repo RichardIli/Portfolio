@@ -1,0 +1,2 @@
+This repository is intended for the storage of sample projects. 
+According to the type of file they are, each project was classified into several categories and saved in the corresponding branch.
