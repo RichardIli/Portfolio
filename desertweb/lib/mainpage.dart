@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'header.dart';
+import 'pages/homepage.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,18 +12,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Header(),
-            ],
-          ),
-        ),
-      ),
+      home: Homepage(),
     );
   }
 }
