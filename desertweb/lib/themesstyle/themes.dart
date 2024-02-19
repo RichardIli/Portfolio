@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-//USe them to controll all the things
+//Use them to controll all the things
 
 const bgcolor = Colors.black;
 const bordercolor = Colors.yellow;
 const iconfontcolor = Colors.white;
 const double logosize = 50;
+const double normaltext = 15;
 
 class CustomThemes {
   static ThemeData socialbuttontheme = ThemeData(

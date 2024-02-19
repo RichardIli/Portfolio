@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:desertweb/themesstyle/themes.dart';
+import 'package:desertweb/customwidgets/logo.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -25,14 +26,7 @@ class Header extends StatelessWidget {
             socialbutton_widget(icon: twicon),
           ],
         ),
-        TextButton(
-          style: logobuttonstyle,
-          onPressed: () {},
-          child: const Text(
-            'Desserts Shop',
-            style: logotextstyle,
-          ),
-        ),
+        const Logo(),
         TextButton(
             onPressed: () {},
             style: callusbuttonstyle,
