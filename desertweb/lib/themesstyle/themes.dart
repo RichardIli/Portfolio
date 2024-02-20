@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 //Use them to controll all the things
 
@@ -7,6 +8,10 @@ const bordercolor = Colors.yellow;
 const iconfontcolor = Colors.white;
 const double logosize = 50;
 const double normaltext = 15;
+
+const fbicon = Icons.facebook,
+    igicon = FontAwesomeIcons.instagram,
+    twtricon = FontAwesomeIcons.twitter;
 
 class CustomThemes {
   static ThemeData socialbuttontheme = ThemeData(

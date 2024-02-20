@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:desertweb/themesstyle/themes.dart';
 import 'package:desertweb/customwidgets/logo.dart';
@@ -11,19 +10,17 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const fbicon = Icons.facebook,
-        igicon = FontAwesomeIcons.instagram,
-        twicon = FontAwesomeIcons.twitter;
     return Row(
       //mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             socialbutton_widget(icon: fbicon),
             socialbutton_widget(icon: igicon),
-            socialbutton_widget(icon: twicon),
+            socialbutton_widget(icon: twtricon),
           ],
         ),
         const Logo(),
