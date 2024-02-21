@@ -39,15 +39,15 @@ class Footer extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        footer_social_button(
+                        FooterSocialButton(
                           icon: fbicon,
                           text: 'Facebook',
                         ),
-                        footer_social_button(
+                        FooterSocialButton(
                           icon: igicon,
                           text: 'Instagram',
                         ),
-                        footer_social_button(
+                        FooterSocialButton(
                           icon: twtricon,
                           text: 'Twitter',
                         ),
@@ -60,15 +60,15 @@ class Footer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  footer_Location_Contact(
+                  FooterLocationContact(
                     icon: FontAwesomeIcons.locationArrow,
                     text: '123 st., \n123 City, \n123',
                   ),
-                  footer_Location_Contact(
+                  FooterLocationContact(
                     icon: Icons.timer,
                     text: 'Mon to Fri, 9am to 6pm',
                   ),
-                  footer_Location_Contact(
+                  FooterLocationContact(
                     icon: Icons.mail_outline,
                     text: 'Contact us: \n 13456789 \n123456789@gmail.com',
                   ),
@@ -100,9 +100,8 @@ class Footer extends StatelessWidget {
   }
 }
 
-// ignore: camel_case_types
-class footer_Location_Contact extends StatelessWidget {
-  const footer_Location_Contact({
+class FooterLocationContact extends StatelessWidget {
+  const FooterLocationContact({
     super.key,
     required this.icon,
     required this.text,
@@ -132,9 +131,8 @@ class footer_Location_Contact extends StatelessWidget {
   }
 }
 
-// ignore: camel_case_types
-class footer_social_button extends StatelessWidget {
-  const footer_social_button({
+class FooterSocialButton extends StatelessWidget {
+  const FooterSocialButton({
     super.key,
     required this.icon,
     required this.text,

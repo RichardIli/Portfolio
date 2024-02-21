@@ -18,9 +18,9 @@ class Header extends StatelessWidget {
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            socialbutton_widget(icon: fbicon),
-            socialbutton_widget(icon: igicon),
-            socialbutton_widget(icon: twtricon),
+            SocialbuttonWidget(icon: fbicon),
+            SocialbuttonWidget(icon: igicon),
+            SocialbuttonWidget(icon: twtricon),
           ],
         ),
         const Logo(),
@@ -36,9 +36,8 @@ class Header extends StatelessWidget {
   }
 }
 
-// ignore: camel_case_types
-class socialbutton_widget extends StatelessWidget {
-  const socialbutton_widget({
+class SocialbuttonWidget extends StatelessWidget {
+  const SocialbuttonWidget({
     super.key,
     required this.icon,
   });
