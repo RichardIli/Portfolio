@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:desertweb/customwidgets/header.dart';
 import 'package:desertweb/customwidgets/navbar.dart';
 //import 'package:desertweb/themesstyle/themes.dart';
 import 'package:desertweb/customwidgets/footer.dart';
+import 'package:chewie/chewie.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({
@@ -25,16 +25,54 @@ class Homepage extends StatelessWidget {
               sizedbox1(),
               colddessertset(),
               hotcoldoption(),
-              YoutubePlayer(
-                controller: YoutubePlayerController(
-                  initialVideoId: 'https://www.youtube.com/watch?v=mNynK3MeErY',
-                  flags: const YoutubePlayerFlags(
-                    autoPlay: false,
-                    mute: false,
+              /*'https://www.youtube.com/watch?v=mNynK3MeErY'*/
+              const Padding(
+                padding: EdgeInsets.all(100),
+                child: SizedBox(
+                  height: 300,
+                  width: double.infinity,
+                  child: Column(
+                    children: [
+                      Text(
+                        'Food Lovers Say',
+                        style: TextStyle(
+                          color: Colors.yellow,
+                          fontSize: 50,
+                        ),
+                      ),
+                      Divider(
+                        thickness: 10,
+                        color: Colors.transparent,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ExpertsComment(
+                            comment:
+                                '"The dessert is absolutely delicious, a perfect blend of flavors and textures that delights the taste buds."',
+                            imageurl:
+                                'https://images.pexels.com/photos/432059/pexels-photo-432059.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                            name: 'Expert 1',
+                          ),
+                          ExpertsComment(
+                            comment:
+                                '"The dessert is absolutely delicious, a perfect blend of flavors and textures that delights the taste buds."',
+                            imageurl:
+                                'https://images.pexels.com/photos/14455016/pexels-photo-14455016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                            name: 'Expert 2',
+                          ),
+                          ExpertsComment(
+                            comment:
+                                '"The dessert is absolutely delicious, a perfect blend of flavors and textures that delights the taste buds."',
+                            imageurl:
+                                'https://images.pexels.com/photos/3778361/pexels-photo-3778361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                            name: 'Expert 3',
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                showVideoProgressIndicator: true,
-                progressIndicatorColor: Colors.blueAccent,
               ),
               const Footer(),
             ],
@@ -181,6 +219,96 @@ class Homepage extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class ExpertsComment extends StatelessWidget {
+  const ExpertsComment({
+    super.key,
+    required this.comment,
+    required this.imageurl,
+    required this.name,
+  });
+
+  final String comment, imageurl, name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Card(
+        color: Colors.transparent,
+        elevation: 0,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero,
+          side: BorderSide(
+            color: Colors.grey,
+            width: 2,
+            style: BorderStyle.solid,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                children: [
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                  ),
+                  Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                  ),
+                ],
+              ),
+              Text(
+                comment,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: ClipOval(
+                      child: Image.network(
+                        imageurl,
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    name,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
