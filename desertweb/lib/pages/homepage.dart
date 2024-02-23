@@ -3,7 +3,6 @@ import 'package:desertweb/customwidgets/header.dart';
 import 'package:desertweb/customwidgets/navbar.dart';
 //import 'package:desertweb/themesstyle/themes.dart';
 import 'package:desertweb/customwidgets/footer.dart';
-import 'package:chewie/chewie.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({
