@@ -42,30 +42,30 @@ class Dessertpage extends StatelessWidget {
         children: [
           ProductRow(
             p1imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p1name: "suppoed tobe hot product",
+                'https://images.pexels.com/photos/239584/pexels-photo-239584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p1name: "Melted Hot Chocolate",
             p1price: '\$1.23',
             p2imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p2name: 'suppoed tobe hot product',
+                'https://images.pexels.com/photos/808941/pexels-photo-808941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p2name: 'Macaroons',
             p2price: '\$1.45',
             p3imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p3name: 'suppoed tobe hot product',
+                'https://images.pexels.com/photos/1346382/pexels-photo-1346382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p3name: 'Raspberry Pie',
             p3price: '\$1.67',
           ),
           ProductRow(
             p1imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p1name: "suppoed tobe hot product",
+                'https://images.pexels.com/photos/301972/pexels-photo-301972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p1name: "Chocolate chips Cookies",
             p1price: '\$1.23',
             p2imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p2name: 'suppoed tobe hot product',
+                'https://images.pexels.com/photos/239584/pexels-photo-239584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p2name: 'Melted Hot Chocolate',
             p2price: '\$1.45',
             p3imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p3name: 'suppoed tobe hot product',
+                'https://images.pexels.com/photos/808941/pexels-photo-808941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p3name: 'Macaroons',
             p3price: '\$1.67',
           ),
         ],
@@ -84,26 +84,26 @@ class Dessertpage extends StatelessWidget {
             p1name: "Strawberry Ice Cream",
             p1price: '\$1.23',
             p2imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p2name: 'Strawberry Ice Cream ver.2',
+                'https://images.pexels.com/photos/5946966/pexels-photo-5946966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p2name: 'Macha Latte & Sweet Pie',
             p2price: '\$1.45',
             p3imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p3name: 'Strawberry Ice Cream ver.3',
+                'https://images.pexels.com/photos/2144112/pexels-photo-2144112.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p3name: 'Cake?',
             p3price: '\$1.67',
           ),
           ProductRow(
             p1imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p1name: "Strawberry Ice Cream ver.4",
+                'https://images.pexels.com/photos/6341572/pexels-photo-6341572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p1name: "Chocolate Cake",
             p1price: '\$1.23',
             p2imagelink:
                 'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p2name: 'Strawberry Ice Cream ver.5',
+            p2name: 'Strawberry Ice Cream',
             p2price: '\$1.45',
             p3imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p3name: 'Strawberry Ice Cream ver.3',
+                'https://images.pexels.com/photos/5946966/pexels-photo-5946966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            p3name: 'Macha Latte & Sweet Pie',
             p3price: '\$1.67',
           ),
         ],

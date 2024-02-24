@@ -1,6 +1,5 @@
+import 'package:desertweb/pages/contactpage.dart';
 import 'package:flutter/material.dart';
-
-import 'pages/dessertpage.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +11,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Dessertpage(),
+      home: Contactpage(),
     );
   }
 }
