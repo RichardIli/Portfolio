@@ -1,6 +1,9 @@
+import 'package:desertweb/pages/aboutpage.dart';
+import 'package:desertweb/pages/contactpage.dart';
+import 'package:desertweb/pages/dessertpage.dart';
+import 'package:desertweb/pages/homepage.dart';
+import 'package:desertweb/themesstyleroute/themes.dart';
 import 'package:flutter/material.dart';
-
-import 'package:desertweb/themesstyle/themes.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({
@@ -9,14 +12,26 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Navbarbuttons(text: 'Home'),
-        Navbarbuttons(text: 'Desserts'),
-        Navbarbuttons(text: 'About'),
-        Navbarbuttons(text: 'Contact'),
+        Navbarbuttons(
+          text: 'Home',
+          navto: MaterialPageRoute(builder: (context) => const Homepage()),
+        ),
+        Navbarbuttons(
+          text: 'Desserts',
+          navto: MaterialPageRoute(builder: (context) => const Dessertpage()),
+        ),
+        Navbarbuttons(
+          text: 'About',
+          navto: MaterialPageRoute(builder: (context) => const Aboutpage()),
+        ),
+        Navbarbuttons(
+          text: 'Contact',
+          navto: MaterialPageRoute(builder: (context) => const Contactpage()),
+        ),
       ],
     );
   }
@@ -26,15 +41,22 @@ class Navbarbuttons extends StatelessWidget {
   const Navbarbuttons({
     super.key,
     required this.text,
+    required this.navto,
   });
 
   final String text;
+  final MaterialPageRoute navto;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            navto,
+          );
+        },
         style: navbarbuttonstyle,
         child: Text(
           text,

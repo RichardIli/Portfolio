@@ -21,136 +21,89 @@ class Dessertpage extends StatelessWidget {
                     'https://images.pexels.com/photos/3523148/pexels-photo-3523148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                 text: 'Cold Desserts',
               ),
-              coldproducts(),
+              Container(
+                padding: const EdgeInsets.all(100.0),
+                color: Colors.transparent,
+                height: 700,
+                width: double.infinity,
+                child: GridView.count(
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  crossAxisCount: 3,
+                  children: const [
+                    ProductContainer(
+                      imagelink:
+                          'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
+                      productname: "Strawberry Ice Cream",
+                      price: '\$1.23',
+                    ),
+                    ProductContainer(
+                      imagelink:
+                          'https://images.pexels.com/photos/5946966/pexels-photo-5946966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                      productname: 'Macha Latte & Sweet Pie',
+                      price: '\$1.23',
+                    ),
+                    ProductContainer(
+                      imagelink:
+                          'https://images.pexels.com/photos/2144112/pexels-photo-2144112.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                      productname: 'Cake?',
+                      price: '\$1.23',
+                    ),
+                    ProductContainer(
+                      imagelink:
+                          'https://images.pexels.com/photos/6341572/pexels-photo-6341572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                      productname: 'Chocolate Cake',
+                      price: '\$1.23',
+                    ),
+                  ],
+                ),
+              ),
               const ColdAndHot(
                   image:
                       'https://images.pexels.com/photos/2067422/pexels-photo-2067422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                   text: 'Hot Desserts'),
-              hotproducts(),
+              Container(
+                padding: const EdgeInsets.all(100.0),
+                color: Colors.transparent,
+                height: 700,
+                width: double.infinity,
+                child: GridView.count(
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  crossAxisCount: 3,
+                  children: const [
+                    ProductContainer(
+                      imagelink:
+                          'https://images.pexels.com/photos/239584/pexels-photo-239584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                      productname: "Melted Hot Chocolate",
+                      price: '\$1.23',
+                    ),
+                    ProductContainer(
+                      imagelink:
+                          'https://images.pexels.com/photos/808941/pexels-photo-808941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                      productname: 'Macaroons',
+                      price: '\$1.23',
+                    ),
+                    ProductContainer(
+                      imagelink:
+                          'https://images.pexels.com/photos/1346382/pexels-photo-1346382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                      productname: 'Raspberry Pie',
+                      price: '\$1.23',
+                    ),
+                    ProductContainer(
+                      imagelink:
+                          'https://images.pexels.com/photos/301972/pexels-photo-301972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                      productname: 'Chocolate Chip Cookies',
+                      price: '\$1.23',
+                    ),
+                  ],
+                ),
+              ),
               const Footer(),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Padding hotproducts() {
-    return const Padding(
-      padding: EdgeInsets.all(100),
-      child: Column(
-        children: [
-          ProductRow(
-            p1imagelink:
-                'https://images.pexels.com/photos/239584/pexels-photo-239584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p1name: "Melted Hot Chocolate",
-            p1price: '\$1.23',
-            p2imagelink:
-                'https://images.pexels.com/photos/808941/pexels-photo-808941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p2name: 'Macaroons',
-            p2price: '\$1.45',
-            p3imagelink:
-                'https://images.pexels.com/photos/1346382/pexels-photo-1346382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p3name: 'Raspberry Pie',
-            p3price: '\$1.67',
-          ),
-          ProductRow(
-            p1imagelink:
-                'https://images.pexels.com/photos/301972/pexels-photo-301972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p1name: "Chocolate chips Cookies",
-            p1price: '\$1.23',
-            p2imagelink:
-                'https://images.pexels.com/photos/239584/pexels-photo-239584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p2name: 'Melted Hot Chocolate',
-            p2price: '\$1.45',
-            p3imagelink:
-                'https://images.pexels.com/photos/808941/pexels-photo-808941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p3name: 'Macaroons',
-            p3price: '\$1.67',
-          ),
-        ],
-      ),
-    );
-  }
-
-  Padding coldproducts() {
-    return const Padding(
-      padding: EdgeInsets.all(100),
-      child: Column(
-        children: [
-          ProductRow(
-            p1imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p1name: "Strawberry Ice Cream",
-            p1price: '\$1.23',
-            p2imagelink:
-                'https://images.pexels.com/photos/5946966/pexels-photo-5946966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p2name: 'Macha Latte & Sweet Pie',
-            p2price: '\$1.45',
-            p3imagelink:
-                'https://images.pexels.com/photos/2144112/pexels-photo-2144112.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p3name: 'Cake?',
-            p3price: '\$1.67',
-          ),
-          ProductRow(
-            p1imagelink:
-                'https://images.pexels.com/photos/6341572/pexels-photo-6341572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p1name: "Chocolate Cake",
-            p1price: '\$1.23',
-            p2imagelink:
-                'https://images.pexels.com/photos/5060940/pexels-photo-5060940.jpeg',
-            p2name: 'Strawberry Ice Cream',
-            p2price: '\$1.45',
-            p3imagelink:
-                'https://images.pexels.com/photos/5946966/pexels-photo-5946966.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            p3name: 'Macha Latte & Sweet Pie',
-            p3price: '\$1.67',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ProductRow extends StatelessWidget {
-  const ProductRow({
-    super.key,
-    required this.p1imagelink,
-    required this.p1name,
-    required this.p1price,
-    required this.p2imagelink,
-    required this.p2name,
-    required this.p2price,
-    required this.p3imagelink,
-    required this.p3name,
-    required this.p3price,
-  });
-
-  final String p1imagelink, p2imagelink, p3imagelink;
-  final String p1name, p2name, p3name;
-  final String p1price, p2price, p3price;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        ProductContainer(
-          imagelink: p1imagelink,
-          productname: p1name,
-          price: p1price,
-        ),
-        ProductContainer(
-          imagelink: p2imagelink,
-          productname: p2name,
-          price: p2price,
-        ),
-        ProductContainer(
-          imagelink: p3imagelink,
-          productname: p3name,
-          price: p3price,
-        ),
-      ],
     );
   }
 }
@@ -166,63 +119,57 @@ class ProductContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300,
-      height: 300,
-      child: Expanded(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Image.network(
-              imagelink,
-              width: double.infinity,
-              height: 200,
-              fit: BoxFit.cover,
-            ),
-            Text(
-              productname,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-            Text(
-              price,
-              style: const TextStyle(
-                color: Colors.yellow,
-                fontSize: 20,
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<OutlinedBorder>(
-                  const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
-                side: MaterialStateProperty.all<BorderSide>(
-                  const BorderSide(
-                    color: Colors.yellow,
-                    width: 2,
-                  ),
-                ),
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                  const EdgeInsets.all(0),
-                ),
-              ),
-              child: const Text(
-                'Buy',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
-            )
-          ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Image.network(
+          imagelink,
+          width: double.infinity,
+          height: 200,
+          fit: BoxFit.cover,
         ),
-      ),
+        Text(
+          productname,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+        ),
+        Text(
+          price,
+          style: const TextStyle(
+            color: Colors.yellow,
+            fontSize: 20,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all<OutlinedBorder>(
+              const RoundedRectangleBorder(
+                borderRadius: BorderRadius.zero,
+              ),
+            ),
+            side: MaterialStateProperty.all<BorderSide>(
+              const BorderSide(
+                color: Colors.yellow,
+                width: 2,
+              ),
+            ),
+            padding: MaterialStateProperty.all<EdgeInsets>(
+              const EdgeInsets.all(0),
+            ),
+          ),
+          child: const Text(
+            'Buy',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+          ),
+        )
+      ],
     );
   }
 }
