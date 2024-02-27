@@ -1,3 +1,4 @@
+import 'package:desertweb/pages/homepage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:desertweb/themesstyleroute/themes.dart';
@@ -11,7 +12,14 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: logobuttonstyle,
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Homepage(),
+          ),
+        );
+      },
       child: const Text(
         'Desserts Shop',
         style: logotextstyle,

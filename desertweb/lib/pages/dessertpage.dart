@@ -59,9 +59,10 @@ class Dessertpage extends StatelessWidget {
                 ),
               ),
               const ColdAndHot(
-                  image:
-                      'https://images.pexels.com/photos/2067422/pexels-photo-2067422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                  text: 'Hot Desserts'),
+                image:
+                    'https://images.pexels.com/photos/2067422/pexels-photo-2067422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                text: 'Hot Desserts',
+              ),
               Container(
                 padding: const EdgeInsets.all(100.0),
                 color: Colors.transparent,

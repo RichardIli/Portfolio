@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'package:desertweb/customwidgets/logo.dart';
 import 'package:desertweb/customwidgets/navbar.dart';
 import 'package:desertweb/themesstyleroute/themes.dart';
@@ -25,8 +25,8 @@ class Footer extends StatelessWidget {
             ],
           ),
           divider(),
-          const Padding(
-            padding: EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
               top: 50,
               bottom: 50,
             ),
@@ -35,7 +35,7 @@ class Footer extends StatelessWidget {
                 Expanded(
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         'Desserts, with their irresistible sweetness and diverse array of flavors, hold a special place in culinary delights. Ranging from decadent chocolate creations to delicate pastries and refreshing fruit-based treats, desserts cater to a universal love for indulgence. These delightful confections often serve as the perfect finale to a meal, elevating the dining experience with a symphony of textures and tastes. Whether it is the comforting warmth of a freshly baked apple pie, the silky richness of a velvety cheesecake, or the artful presentation of a colorful fruit tart, desserts not only satisfy our sweet cravings but also showcase the creativity and skill of culinary artisans. In every culture, desserts play a role in celebrations, offering a sweet note of joy and bringing people together over shared moments of delight. The world of desserts is a realm of endless possibilities, where each bite tells a story of craftsmanship and passion, making them a delightful and integral part of the culinary landscape.',
                         style: TextStyle(
                           fontSize: 12,
@@ -43,7 +43,7 @@ class Footer extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           top: 20,
                         ),
                         child: Row(
@@ -51,22 +51,29 @@ class Footer extends StatelessWidget {
                             FooterSocialButton(
                               icon: fbicon,
                               text: 'Facebook',
+                              function: () {
+                                openFacebook();
+                              },
                             ),
                             FooterSocialButton(
-                              icon: igicon,
-                              text: 'Instagram',
-                            ),
+                                icon: igicon,
+                                text: 'Instagram',
+                                function: () {
+                                  openInstagram();
+                                }),
                             FooterSocialButton(
-                              icon: twtricon,
-                              text: 'Twitter',
-                            ),
+                                icon: twtricon,
+                                text: 'Twitter',
+                                function: () {
+                                  openFacebook();
+                                }),
                           ],
                         ),
                       ),
                     ],
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,6 +115,33 @@ class Footer extends StatelessWidget {
       thickness: 2.5,
       color: Colors.grey,
     );
+  }
+}
+
+void openFacebook() async {
+  final url = Uri.parse('https://www.facebook.com');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+void openInstagram() async {
+  final url = Uri.parse('https://www.instagram.com');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+void openTwitter() async {
+  final url = Uri.parse('https://twitter.com');
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
 
@@ -156,17 +190,19 @@ class FooterSocialButton extends StatelessWidget {
     super.key,
     required this.icon,
     required this.text,
+    required this.function,
   });
 
   final IconData icon;
   final String text;
+  final Function() function;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: TextButton.icon(
-        onPressed: () {},
+        onPressed: function,
         icon: Icon(
           icon,
           size: 15,

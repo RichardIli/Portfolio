@@ -24,7 +24,6 @@ class Homepage extends StatelessWidget {
               sizedbox1(),
               colddessertset(),
               hotcoldoption(),
-              /*'https://www.youtube.com/watch?v=mNynK3MeErY'*/
               const Padding(
                 padding: EdgeInsets.all(100),
                 child: SizedBox(
