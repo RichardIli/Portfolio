@@ -1,7 +1,7 @@
-import 'package:desertweb/pages/aboutpage.dart';
-import 'package:desertweb/pages/contactpage.dart';
-import 'package:desertweb/pages/dessertpage.dart';
-import 'package:desertweb/pages/homepage.dart';
+import 'package:desertweb/pages/desktop/aboutpage.dart';
+import 'package:desertweb/pages/desktop/contactpage.dart';
+import 'package:desertweb/pages/desktop/dessertpage.dart';
+import 'package:desertweb/pages/desktop/homepage.dart';
 import 'package:desertweb/themesstyleroute/themes.dart';
 import 'package:flutter/material.dart';
 

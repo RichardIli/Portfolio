@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:desertweb/customwidgets/header.dart';
 import 'package:desertweb/customwidgets/navbar.dart';
-//import 'package:desertweb/themesstyle/themes.dart';
 import 'package:desertweb/customwidgets/footer.dart';
+
+late double screenwidth;
 
 class Homepage extends StatelessWidget {
   const Homepage({
@@ -11,6 +12,8 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentwidth = MediaQuery.of(context).size.width;
+    screenwidth = currentwidth;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
