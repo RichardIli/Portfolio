@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppbar({
+class DoneAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const DoneAppBar({
     super.key,
   });
 
@@ -10,15 +10,15 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: Builder(
         builder: (BuildContext context) {
-          return IconButton(
+          return TextButton.icon(
+            label: const Text('To - Do'),
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
-            icon: const Icon(Icons.menu),
+            icon: const Icon(Icons.keyboard_double_arrow_right_rounded),
           );
         },
       ),
-      title: const Text('To-Do!'),
     );
   }
 

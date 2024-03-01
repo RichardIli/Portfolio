@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_mobile_application/Pages/todopage.dart';
-import 'package:todo_list_mobile_application/Themes/theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,12 +10,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: Theme(
-          data: mainCustomTheme,
-          child: const ToDopage(),
-        ),
+        child: ToDopage(),
       ),
     );
   }

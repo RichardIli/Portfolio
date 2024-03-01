@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list_mobile_application/Pages/donepage.dart';
+import 'package:todo_list_mobile_application/Pages/todopage.dart';
 import 'package:todo_list_mobile_application/Themes/theme.dart';
 
 class Menu extends StatelessWidget {
@@ -22,9 +24,12 @@ class Menu extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Menu',
-                    style: customdrawerheadertextstyle,
+                  Title(
+                    color: color1,
+                    child: const Text(
+                      'Menu',
+                      style: customDrawerTitleStyle,
+                    ),
                   ),
                   IconButton(
                     onPressed: () {
@@ -36,15 +41,40 @@ class Menu extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Home'),
-            onTap: () {
-              Navigator.pop(context);
-            },
+          ListContent(
+            txt: 'To - Do Task',
+            navto: MaterialPageRoute(builder: (context) => const ToDopage()),
           ),
+          ListContent(
+            txt: 'Done Task',
+            navto: MaterialPageRoute(builder: (context) => const Donepage()),
+          )
         ],
       ),
+    );
+  }
+}
+
+class ListContent extends StatelessWidget {
+  const ListContent({
+    super.key,
+    required this.txt,
+    required this.navto,
+  });
+
+  final String txt;
+  final MaterialPageRoute navto;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        txt,
+        style: customListTitleStyle,
+      ),
+      onTap: () {
+        Navigator.push(context, navto);
+      },
     );
   }
 }
