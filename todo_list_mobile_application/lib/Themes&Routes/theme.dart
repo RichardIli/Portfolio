@@ -10,6 +10,14 @@ const Color color1 = Color(0xFF1f363d),
     colorwhite = Colors.white;
 
 ThemeData mainCustomTheme = ThemeData(
+  appBarTheme: const AppBarTheme(
+      backgroundColor: color1,
+      titleTextStyle: TextStyle(
+        color: colorwhite,
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+      ),
+      centerTitle: true),
   scaffoldBackgroundColor: color5,
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: color4,
@@ -17,16 +25,16 @@ ThemeData mainCustomTheme = ThemeData(
   drawerTheme: const DrawerThemeData(backgroundColor: color5),
 );
 
-ThemeData customToDoAppBarTheme = ThemeData(
-  appBarTheme: const AppBarTheme(
-    backgroundColor: colorshadow,
-    iconTheme: IconThemeData(
-      color: colorwhite,
-    ),
-    toolbarTextStyle: TextStyle(
-      color: colorwhite,
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
+ThemeData customNavBarTheme = ThemeData(
+  textButtonTheme: const TextButtonThemeData(
+    style: ButtonStyle(
+      textStyle: MaterialStatePropertyAll(
+        TextStyle(
+          color: colorblack,
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     ),
   ),
 );

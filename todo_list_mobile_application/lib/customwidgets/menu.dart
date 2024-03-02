@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_mobile_application/Pages/donepage.dart';
-import 'package:todo_list_mobile_application/Pages/todopage.dart';
-import 'package:todo_list_mobile_application/Themes/theme.dart';
+import 'package:todo_list_mobile_application/screens/donepage.dart';
+import 'package:todo_list_mobile_application/screens/todopage.dart';
+import 'package:todo_list_mobile_application/Themes&Routes/theme.dart';
 
 class Menu extends StatelessWidget {
   const Menu({

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_mobile_application/PagesContents/addbtn.dart';
-import 'package:todo_list_mobile_application/PagesContents/todoappbar.dart';
-//import 'package:todo_list_mobile_application/PagesContents/addbtn.dart';
-//import 'package:todo_list_mobile_application/PagesContents/todoappbar.dart';
-import 'package:todo_list_mobile_application/Themes/theme.dart';
+import 'package:todo_list_mobile_application/customwidgets/addbtn.dart';
+import 'package:todo_list_mobile_application/customwidgets/appbar.dart';
+import 'package:todo_list_mobile_application/customwidgets/navbar.dart';
+import 'package:todo_list_mobile_application/Themes&Routes/theme.dart';
 
 class ToDopage extends StatelessWidget {
   const ToDopage({
@@ -15,10 +14,11 @@ class ToDopage extends StatelessWidget {
     return Theme(
       data: mainCustomTheme,
       child: const Scaffold(
+        appBar: CustomAppBar(),
         body: Stack(children: [
           Column(
             children: [
-              ToDoNavbar(),
+              NavBar(),
             ],
           ),
           Align(
