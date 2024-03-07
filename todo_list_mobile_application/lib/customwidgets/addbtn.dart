@@ -8,7 +8,9 @@ class AddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, '/additemwindow');
+      },
       icon: const Icon(
         Icons.add,
       ),

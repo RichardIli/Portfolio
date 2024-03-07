@@ -11,13 +11,14 @@ const Color color1 = Color(0xFF1f363d),
 
 ThemeData mainCustomTheme = ThemeData(
   appBarTheme: const AppBarTheme(
-      backgroundColor: color1,
-      titleTextStyle: TextStyle(
-        color: colorwhite,
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-      ),
-      centerTitle: true),
+    backgroundColor: color1,
+    titleTextStyle: TextStyle(
+      color: colorblack,
+      fontSize: 25,
+      fontWeight: FontWeight.bold,
+    ),
+    centerTitle: false,
+  ),
   scaffoldBackgroundColor: color5,
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: color4,
@@ -25,17 +26,12 @@ ThemeData mainCustomTheme = ThemeData(
   drawerTheme: const DrawerThemeData(backgroundColor: color5),
 );
 
-ThemeData customNavBarTheme = ThemeData(
-  textButtonTheme: const TextButtonThemeData(
-    style: ButtonStyle(
-      textStyle: MaterialStatePropertyAll(
-        TextStyle(
-          color: colorblack,
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    ),
+ThemeData customTabBArIndicatorTheme = ThemeData(
+  tabBarTheme: const TabBarTheme(
+    indicatorColor: Colors.grey,
+    overlayColor: MaterialStatePropertyAll(Colors.transparent),
+    tabAlignment: TabAlignment.center,
+    labelColor: Colors.grey,
   ),
 );
 
@@ -49,23 +45,4 @@ ThemeData customAddBtnTheme = ThemeData(
       iconSize: MaterialStatePropertyAll(25),
     ),
   ),
-);
-
-ThemeData customMenuTheme = ThemeData(
-  iconTheme: const IconThemeData(
-    color: colorwhite,
-    size: 20,
-  ),
-  drawerTheme: const DrawerThemeData(
-    backgroundColor: color5,
-  ),
-);
-const TextStyle customDrawerTitleStyle = TextStyle(
-  color: colorwhite,
-  fontSize: 20,
-  fontWeight: FontWeight.bold,
-);
-const TextStyle customListTitleStyle = TextStyle(
-  color: colorblack,
-  fontWeight: FontWeight.bold,
 );
