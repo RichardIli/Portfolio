@@ -67,37 +67,27 @@ class CustomPicker extends picker.CommonPickerModel {
   }
 }
 
-class Test extends StatelessWidget {
-  const Test({super.key});
+class DateTimePicker extends StatelessWidget {
+  const DateTimePicker({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Datetime Picker'),
-      ),
-      body: Center(
-        child: TextButton(
-          onPressed: () {
-            picker.DatePicker.showDateTimePicker(
-              context,
-              showTitleActions: true,
-              onChanged: (date) {
-                print('change');
-              },
-              onConfirm: (date) {
-                print(
-                    date); // if i want the date and time i only need this the 'date'
-              },
-              currentTime: DateTime.now(),
-            );
+    return TextButton(
+      onPressed: () {
+        picker.DatePicker.showDateTimePicker(
+          context,
+          showTitleActions: true,
+          onChanged: (date) {
+            print('change');
           },
-          child: const Text(
-            'show date time picker',
-            style: TextStyle(color: Colors.blue),
-          ),
-        ),
-      ),
+          onConfirm: (date) {
+            print(
+                date); // if i want the date and time i only need this the 'date'
+          },
+          currentTime: DateTime.now(),
+        );
+      },
+      child: const Text('Select Date and Time'),
     );
   }
 }

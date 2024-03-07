@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_mobile_application/customwidgets/appbar.dart';
+import 'package:todo_list_mobile_application/customwidgets/datetimepicker.dart';
 
 class AddItemWindow extends StatefulWidget {
   const AddItemWindow({super.key});
@@ -47,7 +48,8 @@ class _AddItemWindowState extends State<AddItemWindow> {
                     borderSide: BorderSide.none,
                   ),
                 ),
-              )
+              ),
+              const DateTimePicker(),
             ],
           ),
         ),

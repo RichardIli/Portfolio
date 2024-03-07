@@ -14,8 +14,8 @@ class MainApp extends StatelessWidget {
       title: 'To - Do',
       debugShowCheckedModeBanner: false,
       routes: routes,
-      //initialRoute: '/home',
-      initialRoute: '/test',
+      initialRoute: '/home',
+      //initialRoute: '/test',
     );
   }
 }
