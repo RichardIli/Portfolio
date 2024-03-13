@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list_mobile_application/ThemesandRoutes/theme.dart';
 import 'package:todo_list_mobile_application/customwidgets/appbar.dart';
 import 'package:todo_list_mobile_application/customwidgets/datetimepicker.dart';
 
@@ -14,10 +15,40 @@ class _AddItemWindowState extends State<AddItemWindow> {
       TextEditingController();
   final TextEditingController descriptionTextFieldController =
       TextEditingController();
+
+  String _errorText = '';
+  bool proceed = false;
+
+  void _validateTextField() {
+    subjectTextFieldController.text.isEmpty
+        ? setState(
+            () {
+              _errorText = 'This field is required';
+            },
+          )
+        : setState(
+            () {
+              _errorText = '';
+            },
+          );
+
+    descriptionTextFieldController.text.isEmpty
+        ? setState(
+            () {
+              _errorText = 'This field is required';
+            },
+          )
+        : setState(
+            () {
+              _errorText = '';
+            },
+          );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: ThemeData.light(),
+      data: customLightTheme,
       child: Scaffold(
         appBar: const CustomAppBar(),
         body: Padding(
@@ -28,11 +59,9 @@ class _AddItemWindowState extends State<AddItemWindow> {
               const Text('Subject :'),
               TextField(
                 controller: subjectTextFieldController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Enter Subject...',
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide.none,
-                  ),
+                  errorText: _errorText.isNotEmpty ? _errorText : null,
                 ),
               ),
               const Divider(
@@ -42,14 +71,32 @@ class _AddItemWindowState extends State<AddItemWindow> {
               const Text('Description :'),
               TextField(
                 controller: descriptionTextFieldController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Enter Description...',
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide.none,
+                  errorText: _errorText.isNotEmpty ? _errorText : null,
+                ),
+              ),
+              const Divider(
+                color: Colors.transparent,
+                thickness: 20,
+              ),
+              const Text('Enter Duedate'),
+              const DateTimePicker(),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {
+                    _validateTextField();
+                    // ignore: avoid_print
+                    print(
+                        '${subjectTextFieldController.text}\n${descriptionTextFieldController.text}\n$duedate\n$duetime');
+                  },
+                  child: const Text(
+                    'Add',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ),
-              const DateTimePicker(),
             ],
           ),
         ),
@@ -60,6 +107,7 @@ class _AddItemWindowState extends State<AddItemWindow> {
   @override
   void dispose() {
     subjectTextFieldController.dispose();
+    descriptionTextFieldController.dispose();
     super.dispose();
   }
 }

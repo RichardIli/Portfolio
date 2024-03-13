@@ -1,93 +1,83 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
-    as picker;
+import 'package:todo_list_mobile_application/ThemesandRoutes/theme.dart';
 
-class CustomPicker extends picker.CommonPickerModel {
-  String digits(int value, int length) {
-    return '$value'.padLeft(length, "0");
-  }
-
-  CustomPicker({DateTime? currentTime, picker.LocaleType? locale})
-      : super(locale: locale) {
-    this.currentTime = currentTime ?? DateTime.now();
-    setLeftIndex(this.currentTime.hour);
-    setMiddleIndex(this.currentTime.minute);
-    setRightIndex(this.currentTime.second);
-  }
+class DateTimePicker extends StatefulWidget {
+  const DateTimePicker({
+    super.key,
+  });
 
   @override
-  String? leftStringAtIndex(int index) {
-    if (index >= 0 && index < 24) {
-      return digits(index, 2);
-    } else {
-      return null;
-    }
-  }
-
-  @override
-  String? middleStringAtIndex(int index) {
-    if (index >= 0 && index < 60) {
-      return digits(index, 2);
-    } else {
-      return null;
-    }
-  }
-
-  @override
-  String? rightStringAtIndex(int index) {
-    if (index >= 0 && index < 60) {
-      return digits(index, 2);
-    } else {
-      return null;
-    }
-  }
-
-  @override
-  String leftDivider() {
-    return "|";
-  }
-
-  @override
-  String rightDivider() {
-    return "|";
-  }
-
-  @override
-  List<int> layoutProportions() {
-    return [1, 2, 1];
-  }
-
-  @override
-  DateTime finalTime() {
-    return currentTime.isUtc
-        ? DateTime.utc(currentTime.year, currentTime.month, currentTime.day,
-            currentLeftIndex(), currentMiddleIndex(), currentRightIndex())
-        : DateTime(currentTime.year, currentTime.month, currentTime.day,
-            currentLeftIndex(), currentMiddleIndex(), currentRightIndex());
-  }
+  State<DateTimePicker> createState() => _DateTimePickerState();
 }
 
-class DateTimePicker extends StatelessWidget {
-  const DateTimePicker({super.key});
+DateTime duedate = DateTime.now();
+TimeOfDay duetime = TimeOfDay.now();
+
+class _DateTimePickerState extends State<DateTimePicker> {
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: duedate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != duedate) {
+      setState(() {
+        duedate = picked;
+      });
+    }
+  }
+
+  Future<void> _selectTime(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: duetime,
+    );
+    if (picked != null && picked != duetime) {
+      setState(() {
+        duetime = picked;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        picker.DatePicker.showDateTimePicker(
-          context,
-          showTitleActions: true,
-          onChanged: (date) {
-            print('change');
-          },
-          onConfirm: (date) {
-            print(
-                date); // if i want the date and time i only need this the 'date'
-          },
-          currentTime: DateTime.now(),
-        );
-      },
-      child: const Text('Select Date and Time'),
+    return Theme(
+      data: customDateTimeButtonTheme,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const Text('Date :'),
+              TextButton.icon(
+                label: Text(
+                  '${duedate.year}-${duedate.month}-${duedate.day}',
+                  style: const TextStyle(color: Colors.black),
+                ),
+                onPressed: () {
+                  _selectDate(context);
+                },
+                icon: const Icon(Icons.calendar_month),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              const Text('Time :'),
+              TextButton.icon(
+                label: Text(
+                  '${duetime.hour}:${duetime.minute}',
+                  style: const TextStyle(color: Colors.black),
+                ),
+                onPressed: () {
+                  _selectTime(context);
+                },
+                icon: const Icon(Icons.timer_outlined),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

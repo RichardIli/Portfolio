@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_mobile_application/Themes/theme.dart';
+import 'package:todo_list_mobile_application/ThemesandRoutes/theme.dart';
 import 'package:todo_list_mobile_application/customwidgets/appbar.dart';
 import 'package:todo_list_mobile_application/customwidgets/donetasktab.dart';
 import 'package:todo_list_mobile_application/customwidgets/todotasktab.dart';
@@ -15,30 +15,27 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: ThemeData.light(),
-      child: DefaultTabController(
+      data: customLightTheme,
+      child: const DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: const CustomAppBar(),
+          appBar: CustomAppBar(),
           body: Center(
             child: Column(
               children: [
-                Theme(
-                  data: customTabBArIndicatorTheme,
-                  child: const TabBar(
-                    tabs: [
-                      Tab(
-                        child: TabBarContent(txt: 'To - Do Task'),
+                TabBar(
+                  tabs: [
+                    Tab(
+                      child: TabBarContent(txt: 'To - Do Task'),
+                    ),
+                    Tab(
+                      child: TabBarContent(
+                        txt: 'Done Task',
                       ),
-                      Tab(
-                        child: TabBarContent(
-                          txt: 'Done Task',
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const Expanded(
+                Expanded(
                   child: TabBarView(
                     children: [
                       ToDoTab(),

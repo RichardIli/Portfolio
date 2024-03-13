@@ -12,11 +12,13 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   flutter_datetime_picker_plus: ^2.1.0
   intl: ^0.19.0
+  path: ^1.8.3
+  sqflite: ^2.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 flutter:
   uses-material-design: true
