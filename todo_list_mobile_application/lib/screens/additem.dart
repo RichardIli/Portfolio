@@ -16,33 +16,42 @@ class _AddItemWindowState extends State<AddItemWindow> {
   final TextEditingController descriptionTextFieldController =
       TextEditingController();
 
-  String _errorText = '';
-  bool proceed = false;
+  String subjectErrorText = '', descriptionErrorText = '';
+  bool subjectFilled = false, descriptionFilled = false;
 
   void _validateTextField() {
     subjectTextFieldController.text.isEmpty
         ? setState(
             () {
-              _errorText = 'This field is required';
+              subjectErrorText = 'This field is required';
+              subjectFilled = false;
             },
           )
         : setState(
             () {
-              _errorText = '';
+              subjectErrorText = '';
+              subjectFilled = true;
             },
           );
 
     descriptionTextFieldController.text.isEmpty
         ? setState(
             () {
-              _errorText = 'This field is required';
+              descriptionErrorText = 'This field is required';
+              descriptionFilled = false;
             },
           )
         : setState(
             () {
-              _errorText = '';
+              descriptionErrorText = '';
+              descriptionFilled = true;
             },
           );
+
+    subjectFilled && descriptionFilled
+        ? //put the adding items to sql function
+        {Navigator.pop(context)}
+        : null;
   }
 
   @override
@@ -61,7 +70,8 @@ class _AddItemWindowState extends State<AddItemWindow> {
                 controller: subjectTextFieldController,
                 decoration: InputDecoration(
                   hintText: 'Enter Subject...',
-                  errorText: _errorText.isNotEmpty ? _errorText : null,
+                  errorText:
+                      subjectErrorText.isNotEmpty ? subjectErrorText : null,
                 ),
               ),
               const Divider(
@@ -73,23 +83,22 @@ class _AddItemWindowState extends State<AddItemWindow> {
                 controller: descriptionTextFieldController,
                 decoration: InputDecoration(
                   hintText: 'Enter Description...',
-                  errorText: _errorText.isNotEmpty ? _errorText : null,
+                  errorText: descriptionErrorText.isNotEmpty
+                      ? descriptionErrorText
+                      : null,
                 ),
               ),
               const Divider(
                 color: Colors.transparent,
                 thickness: 20,
               ),
-              const Text('Enter Duedate'),
+              const Text('Enter Duedate and Duetime'),
               const DateTimePicker(),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
                     _validateTextField();
-                    // ignore: avoid_print
-                    print(
-                        '${subjectTextFieldController.text}\n${descriptionTextFieldController.text}\n$duedate\n$duetime');
                   },
                   child: const Text(
                     'Add',

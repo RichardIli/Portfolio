@@ -10,33 +10,34 @@ class DateTimePicker extends StatefulWidget {
   State<DateTimePicker> createState() => _DateTimePickerState();
 }
 
-DateTime duedate = DateTime.now();
+DateTime dueDateTime = DateTime.now();
 TimeOfDay duetime = TimeOfDay.now();
 
 class _DateTimePickerState extends State<DateTimePicker> {
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
+  Future<void> _selectDateTime(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialDate: duedate,
+      initialDate: dueDateTime,
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
     );
-    if (picked != null && picked != duedate) {
-      setState(() {
-        duedate = picked;
-      });
-    }
-  }
-
-  Future<void> _selectTime(BuildContext context) async {
-    final TimeOfDay? picked = await showTimePicker(
-      context: context,
-      initialTime: duetime,
-    );
-    if (picked != null && picked != duetime) {
-      setState(() {
-        duetime = picked;
-      });
+    if (pickedDate != null) {
+      // ignore: use_build_context_synchronously
+      final TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.fromDateTime(dueDateTime),
+      );
+      if (pickedTime != null) {
+        setState(() {
+          dueDateTime = DateTime(
+            pickedDate.year,
+            pickedDate.month,
+            pickedDate.day,
+            pickedTime.hour,
+            pickedTime.minute,
+          );
+        });
+      }
     }
   }
 
@@ -46,35 +47,15 @@ class _DateTimePickerState extends State<DateTimePicker> {
       data: customDateTimeButtonTheme,
       child: Column(
         children: [
-          Row(
-            children: [
-              const Text('Date :'),
-              TextButton.icon(
-                label: Text(
-                  '${duedate.year}-${duedate.month}-${duedate.day}',
-                  style: const TextStyle(color: Colors.black),
-                ),
-                onPressed: () {
-                  _selectDate(context);
-                },
-                icon: const Icon(Icons.calendar_month),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text('Time :'),
-              TextButton.icon(
-                label: Text(
-                  '${duetime.hour}:${duetime.minute}',
-                  style: const TextStyle(color: Colors.black),
-                ),
-                onPressed: () {
-                  _selectTime(context);
-                },
-                icon: const Icon(Icons.timer_outlined),
-              ),
-            ],
+          TextButton.icon(
+            label: Text(
+              '${dueDateTime.year}/${dueDateTime.month}/${dueDateTime.day} - ${dueDateTime.hour}:${dueDateTime.minute}',
+              style: const TextStyle(color: Colors.black),
+            ),
+            onPressed: () {
+              _selectDateTime(context);
+            },
+            icon: const Icon(Icons.calendar_month),
           ),
         ],
       ),
