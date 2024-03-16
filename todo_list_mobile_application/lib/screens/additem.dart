@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_list_mobile_application/ThemesandRoutes/theme.dart';
 import 'package:todo_list_mobile_application/customwidgets/appbar.dart';
 import 'package:todo_list_mobile_application/customwidgets/datetimepicker.dart';
+import 'package:todo_list_mobile_application/data/database.dart';
 
 class AddItemWindow extends StatefulWidget {
   const AddItemWindow({super.key});
@@ -11,14 +12,21 @@ class AddItemWindow extends StatefulWidget {
 }
 
 class _AddItemWindowState extends State<AddItemWindow> {
+  //database reference
+  Database db = Database();
+
+  // text editing controller
   final TextEditingController subjectTextFieldController =
       TextEditingController();
   final TextEditingController descriptionTextFieldController =
       TextEditingController();
 
+  //variables
+  bool hasDateTime = false;
   String subjectErrorText = '', descriptionErrorText = '';
   bool subjectFilled = false, descriptionFilled = false;
 
+  //validate the inputs
   void _validateTextField() {
     subjectTextFieldController.text.isEmpty
         ? setState(
@@ -49,8 +57,21 @@ class _AddItemWindowState extends State<AddItemWindow> {
           );
 
     subjectFilled && descriptionFilled
-        ? //put the adding items to sql function
-        {Navigator.pop(context)}
+        ? {
+            setState(
+              () {
+                db.addData(
+                  subject: subjectTextFieldController.text,
+                  description: descriptionTextFieldController.text,
+                  hasDateTime: hasDateTime,
+                  dueDateTime: dueDateTime,
+                );
+              },
+            ),
+            print(db.toDoList),
+            db.updateData(),
+            Navigator.pop(context),
+          }
         : null;
   }
 
@@ -92,7 +113,20 @@ class _AddItemWindowState extends State<AddItemWindow> {
                 color: Colors.transparent,
                 thickness: 20,
               ),
-              const Text('Enter Duedate and Duetime'),
+              Row(
+                children: [
+                  const Text('Set Date and Time?'),
+                  Checkbox(
+                    activeColor: Colors.blue,
+                    value: hasDateTime,
+                    onChanged: (bool? newValue) {
+                      setState(() {
+                        hasDateTime = newValue!;
+                      });
+                    },
+                  ),
+                ],
+              ),
               const DateTimePicker(),
               Align(
                 alignment: Alignment.centerRight,

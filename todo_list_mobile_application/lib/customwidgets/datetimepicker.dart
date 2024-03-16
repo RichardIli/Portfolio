@@ -11,7 +11,6 @@ class DateTimePicker extends StatefulWidget {
 }
 
 DateTime dueDateTime = DateTime.now();
-TimeOfDay duetime = TimeOfDay.now();
 
 class _DateTimePickerState extends State<DateTimePicker> {
   Future<void> _selectDateTime(BuildContext context) async {
