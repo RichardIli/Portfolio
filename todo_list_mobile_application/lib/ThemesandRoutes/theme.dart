@@ -45,13 +45,19 @@ ThemeData customLightTheme = ThemeData.light().copyWith(
 );
 
 ThemeData customAddBtnTheme = ThemeData(
-  iconButtonTheme: const IconButtonThemeData(
+  iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStatePropertyAll(
-        color4,
+        Colors.grey,
       ),
       iconColor: MaterialStatePropertyAll(colorblack),
       iconSize: MaterialStatePropertyAll(25),
+      side: MaterialStatePropertyAll(
+        BorderSide(
+          color: Colors.grey.shade600,
+          width: 1,
+        ),
+      ),
     ),
   ),
 );

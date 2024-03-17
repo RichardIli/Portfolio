@@ -4,14 +4,14 @@ import 'package:todo_list_mobile_application/utilities/appbar.dart';
 import 'package:todo_list_mobile_application/utilities/datetimepicker.dart';
 import 'package:todo_list_mobile_application/data/database.dart';
 
-class AddItemScreen extends StatefulWidget {
-  const AddItemScreen({super.key});
+class AddItemWindow extends StatefulWidget {
+  const AddItemWindow({super.key});
 
   @override
-  State<AddItemScreen> createState() => _AddItemScreenState();
+  State<AddItemWindow> createState() => _AddItemWindowState();
 }
 
-class _AddItemScreenState extends State<AddItemScreen> {
+class _AddItemWindowState extends State<AddItemWindow> {
   //database reference
   Database db = Database();
 

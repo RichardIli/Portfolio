@@ -2,23 +2,28 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 class Database {
   List toDoList = [];
-  final todobox = Hive.box('todobox');
+  List notDoneToDoList = [];
+  List doneToDoList = [];
 
-  //run in first time open application / fresh application
-  void createInitialData() {
-    toDoList = [
-      [false, 'Sample Subject', 'Sample Description', DateTime.now()],
-    ];
-  }
+  final todobox = Hive.box('todobox');
 
   //load the data from box
   void loadData() {
-    toDoList = todobox.get("TODOLIST");
-  }
-
-  //update the box
-  void updateData() {
-    todobox.put("TODOLIST", toDoList);
+    toDoList.length != todobox.length
+        ? {
+            for (int i = toDoList.length; i < todobox.length; i++)
+              {
+                toDoList.add(todobox.get(i)),
+              },
+            //======================================================
+            //Test if the filtering of data is done only need is to make a
+            //function that will change  the state the 'initial bool(using button)' from false to true.
+            notDoneToDoList =
+                toDoList.where((boolvalue) => boolvalue[0] == false).toList(),
+            doneToDoList =
+                toDoList.where((boolvalue) => boolvalue[0] == true).toList()
+          }
+        : null;
   }
 
   //add data to box
@@ -34,5 +39,17 @@ class Database {
       description,
       hasDateTime ? dueDateTime : null,
     ]);
+  }
+
+  void updateData({required int itemNumber}) {
+    List dataList = getData(itemNumber: itemNumber);
+    dataList[1] = true;
+    todobox.putAt(itemNumber, dataList);
+  }
+
+  //get Data for display
+  getData({required int itemNumber}) {
+    var dataGet = todobox.get(itemNumber);
+    return dataGet;
   }
 }

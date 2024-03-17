@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_mobile_application/ThemesandRoutes/theme.dart';
-import 'package:todo_list_mobile_application/customwidgets/appbar.dart';
-import 'package:todo_list_mobile_application/customwidgets/donetasktab.dart';
-import 'package:todo_list_mobile_application/customwidgets/todotasktab.dart';
+import 'package:todo_list_mobile_application/utilities/appbar.dart';
+import 'package:todo_list_mobile_application/utilities/donetasktab.dart';
+import 'package:todo_list_mobile_application/utilities/todotasktab.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
