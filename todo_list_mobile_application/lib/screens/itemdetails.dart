@@ -9,17 +9,23 @@ class ItemDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Database db = Database();
-    final int itemStringnumber =
-        ModalRoute.of(context)!.settings.arguments as int;
+    final int itemnumber = ModalRoute.of(context)!.settings.arguments as int;
 
-    var details = db.getData(itemNumber: itemStringnumber);
+    var details = db.toDoList[itemnumber];
     String subject = details[1].toString(), description = details[2].toString();
-    DateTime datetime = details[3];
+    DateTime? datetime = details[2];
 
     return Theme(
       data: customLightTheme,
       child: Scaffold(
-        appBar: CustomAppBar(),
+        appBar: CustomAppBar(
+          iconbutton: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.refresh_rounded),
+          ),
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,8 +46,9 @@ class ItemDetailsScreen extends StatelessWidget {
                       fontsize: 20,
                     ),
                     ListContent(
-                        txt:
-                            'Date: ${datetime.year}-${datetime.month}-${datetime.day}    Time:${datetime.hour}:${datetime.minute}'),
+                        txt: datetime == null
+                            ? 'Date: N/A    Time: N/A'
+                            : 'Date: ${datetime.year}-${datetime.month}-${datetime.day}    Time:${datetime.hour}:${datetime.minute}'),
                     ListContent(txt: description),
                   ],
                 ),

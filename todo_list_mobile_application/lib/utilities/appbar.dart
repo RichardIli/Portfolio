@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final IconButton iconbutton;
   const CustomAppBar({
     super.key,
+    required this.iconbutton,
   });
 
   @override
@@ -10,6 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       title: const Text('To - Do'),
+      actions: [iconbutton],
     );
   }
 
