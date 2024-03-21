@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_mobile_application/utilities/addbtn.dart';
 import 'package:todo_list_mobile_application/data/database.dart';
+import 'package:todo_list_mobile_application/utilities/addbtn.dart';
+import 'package:todo_list_mobile_application/utilities/listcontentcard.dart';
+import 'package:todo_list_mobile_application/utilities/tabappbar.dart';
 
 class ToDoTab extends StatefulWidget {
-  const ToDoTab({
-    super.key,
-  });
+  const ToDoTab({super.key});
 
   @override
   State<ToDoTab> createState() => _ToDoTabState();
+
+  static _ToDoTabState? of(BuildContext context) {
+    return context.findAncestorStateOfType<_ToDoTabState>();
+  }
 }
 
 class _ToDoTabState extends State<ToDoTab> {
@@ -30,13 +34,8 @@ class _ToDoTabState extends State<ToDoTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: refresh,
-            icon: Icon(Icons.refresh_rounded),
-          ),
-        ],
+      appBar: TabAppBar(
+        onPressed: refresh,
       ),
       body: ListView.builder(
         itemCount: db.notDoneToDoList.length,
@@ -54,6 +53,7 @@ class _ToDoTabState extends State<ToDoTab> {
               subject: db.notDoneToDoList[index][1],
               selectedTime: db.notDoneToDoList[index][3],
               itemNumber: index,
+              refresh: refresh,
             ),
           );
         },
@@ -61,56 +61,6 @@ class _ToDoTabState extends State<ToDoTab> {
       floatingActionButton: Padding(
         padding: EdgeInsets.all(10),
         child: AddButton(),
-      ),
-    );
-  }
-}
-
-class TodoListContentCard extends StatelessWidget {
-  final bool isCompleted;
-  final String subject;
-  final DateTime? selectedTime;
-  final int itemNumber;
-
-  const TodoListContentCard(
-      {super.key,
-      required this.isCompleted,
-      required this.subject,
-      required this.selectedTime,
-      required this.itemNumber});
-
-  @override
-  Widget build(BuildContext context) {
-    var txt = selectedTime == null
-        ? 'Date: N/A    Time: N/A'
-        : 'Date: ${selectedTime?.month}-${selectedTime?.day}    Time: ${selectedTime?.hour}:${selectedTime?.minute}';
-
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/itemdetails',
-          arguments: itemNumber,
-        );
-      },
-      child: Card(
-        color: Colors.grey.shade300,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                subject,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(txt),
-            ],
-          ),
-        ),
       ),
     );
   }

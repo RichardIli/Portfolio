@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Theme(
       data: customLightTheme,
-      child: const DefaultTabController(
+      child: DefaultTabController(
         length: 2,
         child: Scaffold(
           appBar: CustomAppBar(),
@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
                   child: TabBarView(
                     children: [
                       ToDoTab(),
-                      Conta(clr: Colors.green),
+                      DoneTab(clr: Colors.green),
                     ],
                   ),
                 ),

@@ -11,11 +11,7 @@ class Database {
   void loadData() {
     toDoList.length != todobox.length
         ? {
-            for (int i = toDoList.length; i < todobox.length; i++)
-              {
-                toDoList.add(todobox.get(i)),
-              },
-            //======================================================
+            toDoList = todobox.values.toList(),
             //Test if the filtering of data is done only need is to make a
             //function that will change  the state the 'initial bool(using button)' from false to true.
             notDoneToDoList =
@@ -41,9 +37,12 @@ class Database {
     ]);
   }
 
-  void updateData({required int itemNumber}) {
+  void updateData({
+    required int itemNumber,
+    required bool isCompleted,
+  }) {
     List dataList = getData(itemNumber: itemNumber);
-    dataList[1] = true;
+    dataList[0] = isCompleted;
     todobox.putAt(itemNumber, dataList);
   }
 

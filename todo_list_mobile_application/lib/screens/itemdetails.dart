@@ -36,13 +36,13 @@ class ItemDetailsScreen extends StatelessWidget {
                 child: ListView(
                   children: [
                     ListContent(
-                      subject: subject,
+                      txt: subject,
                       fontsize: 20,
                     ),
                     ListContent(
-                        subject:
+                        txt:
                             'Date: ${datetime.year}-${datetime.month}-${datetime.day}    Time:${datetime.hour}:${datetime.minute}'),
-                    ListContent(subject: description),
+                    ListContent(txt: description),
                   ],
                 ),
               ),
@@ -56,9 +56,9 @@ class ItemDetailsScreen extends StatelessWidget {
 
 class ListContent extends StatelessWidget {
   final double? fontsize;
-  const ListContent({super.key, required this.subject, this.fontsize});
+  const ListContent({super.key, required this.txt, this.fontsize});
 
-  final String subject;
+  final String txt;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class ListContent extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Text(
-          subject,
+          txt,
           style: TextStyle(fontSize: fontsize),
         ),
       ),
