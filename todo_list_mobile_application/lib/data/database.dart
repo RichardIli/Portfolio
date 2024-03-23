@@ -1,55 +1,119 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 class Database {
-  List toDoList = [];
   List notDoneToDoList = [];
   List doneToDoList = [];
 
-  final todobox = Hive.box('todobox');
+  final notDoneToDoBox = Hive.box('notdonetodobox');
+  final doneToDoBox = Hive.box('donetodobox');
 
-  //load the data from box
-  void loadData() {
-    toDoList.length != todobox.length
+  //load data from not done box
+  void loadNotDoneData() {
+    notDoneToDoList.length < notDoneToDoBox.length
         ? {
-            for (int i = toDoList.length; i < todobox.length; i++)
+            for (int i = notDoneToDoList.length; i < notDoneToDoBox.length; i++)
               {
-                toDoList.add(todobox.get(i)),
-              },
-            //======================================================
-            //Test if the filtering of data is done only need is to make a
-            //function that will change  the state the 'initial bool(using button)' from false to true.
-            notDoneToDoList =
-                toDoList.where((boolvalue) => boolvalue[0] == false).toList(),
-            doneToDoList =
-                toDoList.where((boolvalue) => boolvalue[0] == true).toList()
+                notDoneToDoList.add(notDoneToDoBox.get(i)),
+              }
           }
-        : null;
+        : notDoneToDoList.length > notDoneToDoBox.length
+            ? {
+                for (int i = 0; i < notDoneToDoBox.length; i++)
+                  {
+                    notDoneToDoList.add(notDoneToDoBox.get(i)),
+                  }
+              }
+            : null;
   }
 
-  //add data to box
-  void addData({
+  //load data from done box
+  void loadDoneData() {
+    doneToDoList.length < doneToDoBox.length
+        ? {
+            for (int i = doneToDoList.length; i < doneToDoBox.length; i++)
+              {
+                doneToDoList.add(doneToDoBox.get(i)),
+              }
+          }
+        : doneToDoList.length > doneToDoBox.length
+            ? {
+                for (int i = 0; i < doneToDoBox.length; i++)
+                  {
+                    doneToDoList.add(doneToDoBox.get(i)),
+                  }
+              }
+            : null;
+  }
+
+  //add data to not done box
+  void addDataToNotDoneBox({
     required String subject,
     required String description,
     required bool hasDateTime,
-    required DateTime dueDateTime,
+    required DateTime dateTime,
   }) {
-    todobox.add([
-      false,
+    notDoneToDoBox.add([
       subject,
       description,
-      hasDateTime ? dueDateTime : null,
+      hasDateTime ? dateTime : null,
     ]);
   }
 
-  void updateData({required int itemNumber}) {
-    List dataList = getData(itemNumber: itemNumber);
-    dataList[1] = true;
-    todobox.putAt(itemNumber, dataList);
+  //add data to done box
+  void addDataToDoneBox({
+    required String subject,
+    required String description,
+    required bool hasDateTime,
+    required DateTime dateTime,
+  }) {
+    doneToDoBox.add([
+      subject,
+      description,
+      hasDateTime ? dateTime : null,
+    ]);
   }
 
-  //get Data for display
-  getData({required int itemNumber}) {
-    var dataGet = todobox.get(itemNumber);
-    return dataGet;
+  //delete data from not done data
+  void deleteDataFromNotDoneBox({
+    required int itemNumber,
+  }) {
+    notDoneToDoBox.delete(itemNumber);
+  }
+
+  //delete data from done data
+  void deleteDataFromDoneBox({
+    required int itemNumber,
+  }) {
+    doneToDoBox.delete(itemNumber);
+  }
+
+  //transfering datas
+  void transferDataFromDoneBoxToNotDoneBox({
+    required String subject,
+    required String description,
+    required DateTime? dateTime,
+    required int itemNumber,
+  }) {
+    notDoneToDoBox.add([
+      subject,
+      description,
+      dateTime,
+    ]);
+    doneToDoBox.delete(itemNumber);
+  }
+
+  //transfering datas
+  void transferDataFromNotDoneBoxToDoneBox({
+    required String subject,
+    required String description,
+    required DateTime? dateTime,
+    required int itemNumber,
+  }) {
+    doneToDoBox.add([
+      subject,
+      description,
+      dateTime,
+    ]);
+    notDoneToDoBox.delete(itemNumber);
   }
 }

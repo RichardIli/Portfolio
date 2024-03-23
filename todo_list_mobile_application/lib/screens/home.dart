@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
                   child: TabBarView(
                     children: [
                       ToDoTab(),
-                      Conta(clr: Colors.green),
+                      Conta(),
                     ],
                   ),
                 ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_mobile_application/ThemesandRoutes/theme.dart';
-import 'package:todo_list_mobile_application/data/database.dart';
 import 'package:todo_list_mobile_application/utilities/appbar.dart';
 
 class ItemDetailsScreen extends StatelessWidget {
@@ -8,13 +7,12 @@ class ItemDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Database db = Database();
-    final int itemStringnumber =
-        ModalRoute.of(context)!.settings.arguments as int;
+    final Map<String, dynamic>? passedData =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
 
-    var details = db.getData(itemNumber: itemStringnumber);
-    String subject = details[1].toString(), description = details[2].toString();
-    DateTime datetime = details[3];
+    final String subject = passedData?['subject'];
+    final String description = passedData?['description'];
+    final DateTime dateTime = passedData?['datetime'];
 
     return Theme(
       data: customLightTheme,
@@ -41,7 +39,7 @@ class ItemDetailsScreen extends StatelessWidget {
                     ),
                     ListContent(
                         subject:
-                            'Date: ${datetime.year}-${datetime.month}-${datetime.day}    Time:${datetime.hour}:${datetime.minute}'),
+                            'Date: ${dateTime.year}-${dateTime.month}-${dateTime.day}    Time:${dateTime.hour}:${dateTime.minute}'),
                     ListContent(subject: description),
                   ],
                 ),

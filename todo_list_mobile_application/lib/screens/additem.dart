@@ -60,12 +60,11 @@ class _AddItemScreenState extends State<AddItemScreen> {
         ? {
             setState(
               () {
-                db.addData(
-                  subject: subjectTextFieldController.text,
-                  description: descriptionTextFieldController.text,
-                  hasDateTime: hasDateTime,
-                  dueDateTime: dueDateTime,
-                );
+                db.addDataToNotDoneBox(
+                    subject: subjectTextFieldController.text,
+                    description: descriptionTextFieldController.text,
+                    hasDateTime: hasDateTime,
+                    dateTime: dueDateTime);
               },
             ),
             Navigator.pop(context),

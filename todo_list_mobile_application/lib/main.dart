@@ -7,7 +7,9 @@ void main() async {
 
   //open box
   // ignore: unused_local_variable
-  var todobox = await Hive.openBox('todobox');
+  var notdonetodobox = await Hive.openBox('notdonetodobox');
+  // ignore: unused_local_variable
+  var donetodobox = await Hive.openBox('donetodobox');
   runApp(MainApp());
 }
 

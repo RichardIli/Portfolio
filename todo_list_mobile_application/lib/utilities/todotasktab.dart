@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_mobile_application/utilities/addbtn.dart';
 import 'package:todo_list_mobile_application/data/database.dart';
+import 'package:todo_list_mobile_application/utilities/listcontentcard.dart';
 
 class ToDoTab extends StatefulWidget {
   const ToDoTab({
@@ -17,18 +18,19 @@ class _ToDoTabState extends State<ToDoTab> {
 
   @override
   void initState() {
-    db.loadData();
+    db.loadNotDoneData();
     super.initState();
   }
 
   void refresh() {
     setState(() {
-      db.loadData();
+      db.loadNotDoneData();
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    List notDoneToDoList = db.notDoneToDoList;
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -39,8 +41,11 @@ class _ToDoTabState extends State<ToDoTab> {
         ],
       ),
       body: ListView.builder(
-        itemCount: db.notDoneToDoList.length,
+        itemCount: notDoneToDoList.length,
         itemBuilder: (contex, index) {
+          String subject = notDoneToDoList[index][0],
+              details = notDoneToDoList[index][1];
+          DateTime datetime = notDoneToDoList[index][2];
           return Padding(
             padding: const EdgeInsets.only(
               top: 2.5,
@@ -48,12 +53,18 @@ class _ToDoTabState extends State<ToDoTab> {
               left: 5,
               right: 5,
             ),
-            child: TodoListContentCard(
+            child: ListContentCard(
               //the arrangement of the data: bool(iscompleted?), subject, description, date
-              isCompleted: db.notDoneToDoList[index][0],
-              subject: db.notDoneToDoList[index][1],
-              selectedTime: db.notDoneToDoList[index][3],
+              subject: subject,
+              details: details,
+              selectedTime: datetime,
               itemNumber: index,
+              itemstatus: false,
+              transferData: db.transferDataFromNotDoneBoxToDoneBox(
+                  subject: subject,
+                  description: details,
+                  dateTime: datetime,
+                  itemNumber: index),
             ),
           );
         },
@@ -61,56 +72,6 @@ class _ToDoTabState extends State<ToDoTab> {
       floatingActionButton: Padding(
         padding: EdgeInsets.all(10),
         child: AddButton(),
-      ),
-    );
-  }
-}
-
-class TodoListContentCard extends StatelessWidget {
-  final bool isCompleted;
-  final String subject;
-  final DateTime? selectedTime;
-  final int itemNumber;
-
-  const TodoListContentCard(
-      {super.key,
-      required this.isCompleted,
-      required this.subject,
-      required this.selectedTime,
-      required this.itemNumber});
-
-  @override
-  Widget build(BuildContext context) {
-    var txt = selectedTime == null
-        ? 'Date: N/A    Time: N/A'
-        : 'Date: ${selectedTime?.month}-${selectedTime?.day}    Time: ${selectedTime?.hour}:${selectedTime?.minute}';
-
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/itemdetails',
-          arguments: itemNumber,
-        );
-      },
-      child: Card(
-        color: Colors.grey.shade300,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                subject,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(txt),
-            ],
-          ),
-        ),
       ),
     );
   }
